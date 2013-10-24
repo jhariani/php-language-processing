@@ -82,18 +82,19 @@ class StringDistance {
 
         $str1_len = strlen($string1);
         $str2_len = strlen($string2);
-        $temp_string2 = $string2;
+
+        $temp_string2 = str_split($string2, 1);
+        $string1 = str_split($string1, 1);
 
         $commonCharacters = '';
 
         for ($i = 0; $i < $str1_len; $i++) {
 
             $noMatch = True;
-
             // compare if char does match inside given allowedDistance
             // and if it does add it to commonCharacters
-            for ($j = max(0, $i - $allowedDistance); $noMatch && $j < min($i + $allowedDistance + 1, $str2_len); $j++) {
-                if ($temp_string2[$j] == $string1[$i]) {
+            for (max(0, $i - $allowedDistance); $noMatch && $j < min($i + $allowedDistance + 1, $str2_len); $j++) {
+                if ($temp_string2[$j] === $string1[$i]) {
                     $noMatch = False;
 
                     $commonCharacters .= $string1[$i];
@@ -102,7 +103,7 @@ class StringDistance {
                 }
             }
         }
-
+        
         return $commonCharacters;
     }
 
