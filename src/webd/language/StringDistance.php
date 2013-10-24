@@ -93,7 +93,7 @@ class StringDistance {
             $noMatch = True;
             // compare if char does match inside given allowedDistance
             // and if it does add it to commonCharacters
-            for (max(0, $i - $allowedDistance); $noMatch && $j < min($i + $allowedDistance + 1, $str2_len); $j++) {
+            for ($j = max(0, $i - $allowedDistance); $noMatch && $j < min($i + $allowedDistance + 1, $str2_len); $j++) {
                 if ($temp_string2[$j] === $string1[$i]) {
                     $noMatch = False;
 
