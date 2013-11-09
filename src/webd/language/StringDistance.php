@@ -71,10 +71,10 @@ class StringDistance {
         return ($commons1_len / ($str1_len) + $commons2_len / ($str2_len) + ($commons1_len - $transpositions) / ($commons1_len)) / 3.0;
     }
     
-    public static function JaroWinkler($string1, $string2, $PREFIXSCALE = 0.1) {
+    public static function JaroWinkler($string1, $string2, $PREFIXSCALE = 0.1, $MINPREFIXLENGTH = 4) {
 
         $JaroDistance = self::Jaro($string1, $string2);
-        $prefixLength = self::getPrefixLength($string1, $string2);
+        $prefixLength = self::getPrefixLength($string1, $string2, $MINPREFIXLENGTH);
         return $JaroDistance + $prefixLength * $PREFIXSCALE * (1.0 - $JaroDistance);
     }
 
